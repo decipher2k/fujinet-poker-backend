@@ -1,0 +1,34 @@
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} !^public
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+RewriteEngine On
+
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+
+
+# Disable index view
+Options -Indexes
+
+# Hide a specific file
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
